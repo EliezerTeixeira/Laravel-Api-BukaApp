@@ -20,11 +20,11 @@ class CreateCourseStudentsTable extends Migration
             $table->timestamps();
 
             $table  ->foreign('course_id')
-            ->references('id')->on('teachers')
+            ->references('id')->on('courses')
             ->onDelete('cascade');
 
             $table  ->foreign('student_id')
-            ->references('id')->on('teachers')
+            ->references('id')->on('students')
             ->onDelete('cascade');
         });
     }
