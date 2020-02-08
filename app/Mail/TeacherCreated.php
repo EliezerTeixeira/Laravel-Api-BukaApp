@@ -32,7 +32,7 @@ class TeacherCreated extends Mailable
         return $this->markdown('mails.teacher_created')->with([
             'url' => env('APP_URL'),
             'teacherName' => $this->teacher->first_name .' '. $this->teacher->last_name,
-            'teacherEmail' => $this->tecaher->email
+            'teacherEmail' => $this->teacher->email
         ]);
     }
 }

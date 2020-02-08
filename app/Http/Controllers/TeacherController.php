@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\TeacherCreated;
 use App\Teacher;
 use Illuminate\Support\Facades\Validator;
+use Mail;
 
 class TeacherController extends Controller
 {
@@ -46,9 +48,13 @@ class TeacherController extends Controller
     $teachers = new Teacher();
     $teachers->first_name = $request['first_name'];
     $teachers->last_name = $request['last_name'];
-    $teachers->email = $request['email']->unique();
-    $teachers->phone = $request['phone']->unique();
+    $teachers->email = $request['email'];
+    $teachers->phone = $request['phone'];
     $teachers->save();
+
+    if($teachers){
+        Mail::to($teachers->email)->send(new TeacherCreated($teachers));
+    }
 
     return response()->json([
 

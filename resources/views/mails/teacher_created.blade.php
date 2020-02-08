@@ -1,10 +1,12 @@
 @component('mail::message')
 # Introduction
 
-Seja bem vindo **{{ $teacherName }}** ao buka app
+Olá **{{ $teacherName }}** seja bem vido ao buka app
 
-@component('mail::button', ['url' => ''])
-Button Text
+O seu cadastro foi feito com sucesso com o email **{{ $teacherEmail }}
+
+@component('mail::button', ['url' => $url])
+Entrar no App
 @endcomponent
 
 Thanks,<br>
