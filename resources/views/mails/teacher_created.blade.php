@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
+Seja bem vindo **{{ $teacherName }}** ao buka app
 
 @component('mail::button', ['url' => ''])
 Button Text

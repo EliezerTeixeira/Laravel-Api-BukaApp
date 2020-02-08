@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Course;
+use App\CourseStudent;
 
 class CourseController extends Controller
 {
@@ -38,6 +39,21 @@ class CourseController extends Controller
             'data' => $courses
         ]);
 
+    }
+
+    public function registerNewCourseStudent(Request $request){
+
+        $courseStudents = new CourseStudent();
+        $courseStudents->course_id = $request['course_id'];
+        $courseStudents->student_id = $request['student_id'];
+        $courseStudents->save();
+
+        return response()->json([
+
+            'status_code' => 201,
+            'message' => 'Student added to Course sucessfuly',
+            'data' => $courseStudents
+        ]);
     }
 }
 
